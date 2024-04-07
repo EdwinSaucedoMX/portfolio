@@ -1,0 +1,20 @@
+# Python
+
+# Ignore virtual environment
+.venv/
+
+# Ignore Python cache files
+__pycache__/
+
+# Ignore Python environment
+.env
+
+# Logs
+*.log
+
+
+# Node.js
+
+# Ignore Node modules
+node_modules/
+
