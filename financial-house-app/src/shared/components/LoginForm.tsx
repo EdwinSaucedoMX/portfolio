@@ -1,7 +1,7 @@
 "use client"
 import { zodResolver } from "@hookform/resolvers/zod"
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@shared/components/ui/button"
 import { z } from "zod"
 
 import {
@@ -12,9 +12,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+} from "@shared/components/ui/form"
+import { Input } from "@shared/components/ui/input"
 import { useForm } from "react-hook-form"
+import { useRouter } from "next/navigation"
 
 const formSchema = z.object({
   username: z.string().min(5, {
@@ -25,7 +26,12 @@ const formSchema = z.object({
   }),
 })
 
+interface LoginFormProps {
+  onSubmit: (values: z.infer<typeof formSchema>) => void
+}
+
 export function LoginForm() {
+  const router = useRouter()
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -40,15 +46,15 @@ export function LoginForm() {
   return (
     <>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-1/2 p-20 flex-grow flex-wrap bg-secondary h-dvh justify-center flex  flex-col">
           <FormField
             control={form.control}
             name="username"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="w-full max-w-screen-md">
                 <FormLabel>Usuario</FormLabel>
                 <FormControl>
-                  <Input placeholder="@Usuario" {...field} />
+                  <Input className="w-full max-w-screen-md" placeholder="@Usuario" {...field} />
                 </FormControl>
                 <FormDescription>
                   Nombre de usuario público.
@@ -61,7 +67,7 @@ export function LoginForm() {
             control={form.control}
             name="password"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="w-full max-w-screen-md">
                 <FormLabel>Contraseña</FormLabel>
                 <FormControl>
                   <Input type="password" placeholder="••••••••••••" {...field} />
@@ -73,20 +79,13 @@ export function LoginForm() {
               </FormItem>
             )}
           />
-          <section className="buttons">
+          <section className="flex justify-between">
             <Button type="submit" variant="outline">Registrarse</Button>
-            <Button type="submit">Login</Button>
+            <Button type="submit" onClick={() => router.push("/menu")}>Login</Button>
           </section>
         </form>
       </Form>
-      <style jsx>
-        {`
-          .buttons {
-            display: flex;
-            justify-content: space-between;
-          }
-        `}
-      </style>
+
     </>
   )
 }

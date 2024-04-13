@@ -1,16 +1,11 @@
-import { LoginForm } from "@/components/LoginForm"
+import { LoginForm } from "@shared/components/LoginForm"
 
 export default function Home() {
-  const mainSectionStyle: React.CSSProperties = {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100vh",
-    backgroundColor: "#f3f4f6",
-  }
   return (
-    <main className="main-section" style={mainSectionStyle}>
+    <main className="flex place-items-center w-dvw h-dvh flex-wrap " >
+      <section className=" h-dvh w-1/2 flex  place-items-center	flex-grow">
+        <h1 className="text-slate-50 mx-auto ">Finanzas de la Casa</h1>
+      </section>
       <LoginForm />
     </main>
   )
