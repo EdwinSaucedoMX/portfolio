@@ -1,4 +1,6 @@
 import type { Metadata } from "next"
+import { ThemeProvider } from "@/shared/components/theme-provider"
+import { ModeToggle } from "@/shared/components/ModeToggle"
 import { Inter } from "next/font/google"
 import "./globals.css"
 
@@ -16,8 +18,18 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="h-dvh w-dvw box-border">
-      <body className="h-dvh w-dvw bg-slate-900">{children}</body>
+    <html lang="en" className="h-dvh w-dvw box-border" suppressHydrationWarning>
+      <body className="h-dvh w-dvw bg-background">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ModeToggle className="absolute top-2 right-2 z-10" />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

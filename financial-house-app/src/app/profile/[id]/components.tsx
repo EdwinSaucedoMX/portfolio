@@ -2,6 +2,17 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/shared/components/ui/avat
 import { Pencil1Icon } from "@radix-ui/react-icons"
 
 
+
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/shared/components/ui/table"
+
 export function ProfileCard(props: any): React.JSX.Element {
   return (
     <div className='flex flex-row content-stretch place-items-center max-h-fit py-4 transition-all  gap-3'>
@@ -29,3 +40,36 @@ export function AsideSection(props: { title: string, icon: any }) {
     </section>
   )
 }
+
+export function SummaryCard(props: any) {
+  return (
+
+    <section className="flex flex-wrap gap-2 p-6 bg-secondary grow shadow-card-foreground rounded-lg content-start">
+      <h4 className="text-primary font-semibold text-lg">Resumen</h4>
+      <Table>
+        <TableCaption>A list of your recent invoices.</TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-[100px]">Invoice</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead>Method</TableHead>
+            <TableHead className="text-right">Amount</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <TableRow>
+            <TableCell className="font-medium">INV001</TableCell>
+            <TableCell>Paid</TableCell>
+            <TableCell>Credit Card</TableCell>
+            <TableCell className="text-right">$250.00</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </section>
+
+  )
+}
+
+
+
+
