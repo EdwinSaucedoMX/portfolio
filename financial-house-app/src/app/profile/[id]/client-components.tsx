@@ -6,18 +6,26 @@ import { getMonocromaticSequenceHSL } from '@/shared/functions/style'
 export function FullOption(props: PieChartProps) {
   const [selected, setSelected] = useState<number | undefined>(0)
   const [hovered, setHovered] = useState<number | undefined>(undefined)
-  const colorPrimary = getComputedStyle(document.documentElement)
+  const colorPrimary = getComputedStyle(document.documentElement).getPropertyValue('--primary')
   console.log({ colorPrimary })
-  /* const colors = getMonocromaticSequenceHSL(colorPrimary, props.data.length) */
+  const colors = getMonocromaticSequenceHSL(colorPrimary, props.data.length)
 
   const data = props.data.map((entry, i) => {
+    if (selected === i) {
+      return {
+        ...entry,
+        selected: true,
+      }
+    }
     if (hovered === i) {
       return {
         ...entry,
+        selected: true,
         color: 'grey',
       }
     }
-    return { ...entry, /* color: colors[i] */ }
+
+    return entry
   })
 
   const lineWidth = 60
@@ -35,7 +43,7 @@ export function FullOption(props: PieChartProps) {
       segmentsStyle={{ transition: 'stroke .3s', cursor: 'pointer' }}
       segmentsShift={(index) => (index === selected ? 6 : 1)}
       animate
-      label={({ dataEntry }) => Math.round(dataEntry.percentage) + '%'}
+      label={({ dataEntry }) => !!dataEntry.selected ? (Math.round(dataEntry.percentage) + '%') : dataEntry.title}
       labelPosition={100 - lineWidth / 2}
       labelStyle={{
         fill: '#fff',

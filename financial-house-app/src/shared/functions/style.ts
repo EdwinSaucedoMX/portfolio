@@ -17,7 +17,7 @@ export const getMonocromaticSequenceRGB = (
 	return sequence;
 };
 export const getMonocromaticSequenceHSL = (
-	color: `hsl(${number} ${number}% ${number}%)` | string,
+	color: `hsl(${number} ${number}% ${number}%)` | string = "hsl(255 255% 255%)",
 	size = 1
 ) => {
 	const [h, s, l] = color.match(/(\d+(\.\d+)?)/)?.map(Number) ?? [
