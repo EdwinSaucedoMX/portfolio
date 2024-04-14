@@ -43,7 +43,7 @@ export function FullOption(props: PieChartProps) {
       segmentsStyle={{ transition: 'stroke .3s', cursor: 'pointer' }}
       segmentsShift={(index) => (index === selected ? 6 : 1)}
       animate
-      label={({ dataEntry }) => !!dataEntry.selected ? (Math.round(dataEntry.percentage) + '%') : dataEntry.title}
+      label={(props: any) => !!props.dataEntry.selected ? (Math.round(props.dataEntry.percentage) + '%') : props.dataEntry.title}
       labelPosition={100 - lineWidth / 2}
       labelStyle={{
         fill: '#fff',
