@@ -3,64 +3,66 @@ import { UUID } from "crypto"
 import { PieChart } from 'react-minimal-pie-chart'
 import { SummaryCard } from "./components"
 import { getMonocromaticSequenceRGB } from "@/shared/functions/style"
-import { FullOption } from "./client-components"
+import { ChartComponent, FullOption } from "./client-components"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs"
 export default function Page({ params }: { params: { id: string } }) {
-  const colors = getMonocromaticSequenceRGB("rgb( 109,40,217)", 10)
+  const colors = getMonocromaticSequenceRGB("rgb( 109,40,217)", 3)
+  const colors2 = getMonocromaticSequenceRGB("rgb( 109,40,217)", 5)
+  const initialData = [
+    { time: '2018-12-22', value: 32.51 },
+    { time: '2018-12-23', value: 31.11 },
+    { time: '2018-12-24', value: 27.02 },
+    { time: '2018-12-25', value: 27.32 },
+    { time: '2018-12-26', value: 25.17 },
+    { time: '2018-12-27', value: 28.89 },
+    { time: '2018-12-28', value: 25.46 },
+    { time: '2018-12-29', value: 23.92 },
+    { time: '2018-12-30', value: 22.68 },
+    { time: '2018-12-31', value: 22.67 },
+  ]
+
   return (
-    <section className="w-full flex flex-wrap gap-2 p-4 ">
+    <section className="w-full flex flex-wrap gap-2  ">
       <section className="w-full flex flex-wrap gap-2 p-4 content-start ">
         <SummaryCard />
-        <section className="flex flex-wrap gap-2 p-6 bg-secondary grow shadow-card-foreground rounded-lg">
-          {/*  <PieChart
-            className="grow aspect-square  h-64"
-            label={({ dataEntry: { value, title, percentage } }) => `
-              ${Number(percentage).toFixed(2)}%
-            `}
-            data={[
-              { title: 'One', value: 10, color: colors.at(0) },
-              { title: 'Two', value: 15, color: colors.at(1) },
-              { title: 'Three', value: 20, color: colors.at(2) },
-              // Repeat pattern counting to Ten
-              { title: 'Four', value: 25, color: colors.at(3) },
-              { title: 'Five', value: 30, color: colors.at(4) },
-              { title: 'Six', value: 35, color: colors.at(5) },
-              { title: 'Seven', value: 40, color: colors.at(6) },
-              { title: 'Eight', value: 45, color: colors.at(7) },
-              { title: 'Nine', value: 50, color: colors.at(8) },
-              { title: 'Ten', value: 55, color: colors.at(9) },
-            ]}
-            labelStyle={{
-              fontSize: `0.25rem`,
-              fill: 'white',
-              fontWeight: 'normal'
-            }}
-            labelPosition={80}
-            onClick={(event, data) => {
-              console.log({ event: event.currentTarget.se })
-            }}
-            animate={true}
-            animationDuration={500}
-            lineWidth={36}
-            paddingAngle={4}
-            radius={42}
-            startAngle={0}
-            viewBoxSize={[100, 100]}
-          /> */}
-          <FullOption data={[
-            { title: 'One', value: 10, color: colors.at(0) ?? "rgb( 109,40,217)" },
-            { title: 'Two', value: 15, color: colors.at(1) ?? "rgb( 109,40,217)" },
-            { title: 'Three', value: 20, color: colors.at(2) ?? "rgb( 109,40,217)" },
-            // Repeat pattern counting to Ten
-            { title: 'Four', value: 25, color: colors.at(3) ?? "rgb( 109,40,217)" },
-            { title: 'Five', value: 30, color: colors.at(4) ?? "rgb( 109,40,217)" },
-            { title: 'Six', value: 35, color: colors.at(5) ?? "rgb( 109,40,217)" },
-            { title: 'Seven', value: 40, color: colors.at(6) ?? "rgb( 109,40,217)" },
-            { title: 'Eight', value: 45, color: colors.at(7) ?? "rgb( 109,40,217)" },
-            { title: 'Nine', value: 50, color: colors.at(8) ?? "rgb( 109,40,217)" },
-            { title: 'Ten', value: 55, color: colors.at(9) ?? "rgb( 109,40,217)" },
-          ]}
-            className="grow aspect-square  h-64" />
+        <section className="flex flex-wrap gap-2 p-6 bg-secondary grow shadow-card-foreground rounded-lg ">
+          <Tabs defaultValue="incomes" className="min-w-full ">
+            <TabsList className="bg-primary text-primary-foreground">
+              <TabsTrigger value="incomes">Ingresos</TabsTrigger>
+              <TabsTrigger value="expenses">Egresos</TabsTrigger>
+            </TabsList>
+            <TabsContent value="incomes" >
+              <FullOption
+                title="Ingresos"
+                data={[
+                  { title: 'Salario', value: 10, color: colors.at(0) ?? "rgb( 109,40,217)" },
+                  { title: 'Inversion', value: 15, color: colors.at(1) ?? "rgb( 109,40,217)" },
+                  { title: 'Ahorro', value: 20, color: colors.at(2) ?? "rgb( 109,40,217)" },
+                  // Repeat pattern counting to Ten
+
+                ]}
+                className="grow aspect-square  h-48" />
+            </TabsContent>
+            <TabsContent value="expenses" >
+              <FullOption
+                title="Egresos"
+                data={[
+                  { title: 'Mascota', value: 10, color: colors.at(0) ?? "rgb( 109,40,217)" },
+                  { title: 'Alimentos', value: 15, color: colors.at(1) ?? "rgb( 109,40,217)" },
+                  { title: 'Salidas', value: 20, color: colors.at(2) ?? "rgb( 109,40,217)" },
+                  // Repeat pattern counting to Ten
+                  { title: 'Deudas', value: 25, color: colors.at(3) ?? "rgb( 109,40,217)" },
+                  { title: 'Servicios', value: 30, color: colors.at(4) ?? "rgb( 109,40,217)" },
+
+                ]}
+                className="grow aspect-square  h-48" />
+            </TabsContent>
+          </Tabs>
+
         </section>
+      </section>
+      <section className="px-16 w-full flex h-64 *:w-full *:h-full">
+        <ChartComponent data={initialData} className=" w-full max-h-full *:w-full *:h-full flex *:flex *:*:w-full" />
       </section>
     </section>
   )
