@@ -3,6 +3,7 @@ import { PieChart, pieChartDefaultProps, PieChartProps } from 'react-minimal-pie
 import { createChart, ColorType } from 'lightweight-charts'
 import React, { useState, useRef, useEffect, useMemo, useReducer } from 'react'
 import { getMonocromaticSequenceHSL } from '@/shared/functions/style'
+import { useTheme } from 'next-themes'
 
 export function FullOption(props: any) {
   const [selected, setSelected] = useState<number | undefined>(0)
@@ -89,14 +90,16 @@ export function FullOption(props: any) {
 
 
 export const ChartComponent = (props: any) => {
+  const { theme } = useTheme()
+
   const {
     data,
     colors: {
-      backgroundColor = 'white',
+      backgroundColor = 'transparent',
       lineColor = 'rgb( 109,40,217)',
-      textColor = 'black',
+      textColor = theme === "dark" ? 'white' : 'black',
       areaTopColor = 'rgb( 109,40,217)',
-      areaBottomColor = 'rgba(129, 60, 237, 0.28)',
+      areaBottomColor = 'rgba(109, 40, 217, 0.28)',
     } = {},
   } = props
   const chartContainerRef = useRef()
@@ -123,6 +126,19 @@ export const ChartComponent = (props: any) => {
 
       const newSeries = chart.addAreaSeries({ lineColor, topColor: areaTopColor, bottomColor: areaBottomColor })
       newSeries.setData(data)
+      const newSeries2 = chart.addAreaSeries({ lineColor: "rgb(189, 120, 297)", topColor: "rgb(209, 140, 317)", bottomColor: "rgba(209, 140, 317, 0.28)" })
+      newSeries2.setData([
+        { time: '2018-12-22', value: 0 },
+        { time: '2018-12-23', value: 0.51 },
+        { time: '2018-12-24', value: 1 },
+        { time: '2018-12-25', value: 1.97 },
+        { time: '2018-12-26', value: 2 },
+        { time: '2018-12-27', value: 3 },
+        { time: '2018-12-28', value: 6 },
+        { time: '2018-12-29', value: 8 },
+        { time: '2018-12-30', value: 20 },
+        { time: '2018-12-31', value: 31 },
+      ])
 
       window.addEventListener('resize', handleResize)
 

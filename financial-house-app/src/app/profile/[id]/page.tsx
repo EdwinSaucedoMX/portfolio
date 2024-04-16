@@ -61,7 +61,8 @@ export default function Page({ params }: { params: { id: string } }) {
 
         </section>
       </section>
-      <section className="px-16 w-full flex h-64 *:w-full *:h-full">
+      <section className="px-16 w-full flex flex-col h-64 *:w-full *:h-full">
+        <h5 className="text-primary max-h-8 font-semibold text-lg">Desglose</h5>
         <ChartComponent data={initialData} className=" w-full max-h-full *:w-full *:h-full flex *:flex *:*:w-full" />
       </section>
     </section>
