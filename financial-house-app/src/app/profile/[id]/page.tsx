@@ -22,7 +22,7 @@ export default function Page({ params }: { params: { id: string } }) {
   ]
 
   return (
-    <section className="w-full flex flex-wrap gap-2  ">
+    <section className="w-full flex flex-wrap gap-2  sm:py-0 py-12">
       <section className="w-full flex flex-wrap gap-2 p-4 content-start ">
         <SummaryCard />
         <section className="flex flex-wrap gap-2 p-6 bg-secondary grow shadow-card-foreground rounded-lg ">

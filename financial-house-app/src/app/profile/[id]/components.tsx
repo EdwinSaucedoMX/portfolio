@@ -28,7 +28,7 @@ export function ProfileCard(props: any): React.JSX.Element {
 
       </figure>
       <section className="sm:hidden flex-col sm:w-0 w-full group-hover/aside:flex sm:*:transition-all only text-primary-foreground min-h-full content-center">
-        <section className=' cursor-pointer   text-wrap hover:brightness-75'>
+        <section className=' cursor-pointer text-wrap hover:brightness-75'>
           <h6 className="text-lg  font-medium">Nombre</h6>
           <p className="font-thin">Apellido</p>
         </section>
