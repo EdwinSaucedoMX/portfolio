@@ -1,6 +1,6 @@
 import { ProfileAvatar } from './components'
 
-function Page() {
+export default function Page() {
   return (
     <main className=' overflow-hidden min-h-dvh flex flex-column justify-evenly flex-wrap content-stretch  relative '>
       <nav className='text-secondary w-full  px-5 py-2.5 flex justify-end h-12'>
@@ -16,8 +16,3 @@ function Page() {
     </main>
   )
 }
-
-export default Page
-
-
-

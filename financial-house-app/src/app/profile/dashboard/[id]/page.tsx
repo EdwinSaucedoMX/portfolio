@@ -5,6 +5,8 @@ import { SummaryCard } from "./components"
 import { getMonocromaticSequenceRGB } from "@/shared/functions/style"
 import { ChartComponent, FullOption } from "./client-components"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs"
+import { Skeleton } from "@/shared/components/ui/skeleton"
+
 export default function Page({ params }: { params: { id: string } }) {
   const colors = getMonocromaticSequenceRGB("rgb( 109,40,217)", 3)
   const colors2 = getMonocromaticSequenceRGB("rgb( 109,40,217)", 5)
@@ -32,6 +34,7 @@ export default function Page({ params }: { params: { id: string } }) {
               <TabsTrigger value="expenses">Egresos</TabsTrigger>
             </TabsList>
             <TabsContent value="incomes" >
+
               <FullOption
                 title="Ingresos"
                 data={[
@@ -42,6 +45,8 @@ export default function Page({ params }: { params: { id: string } }) {
 
                 ]}
                 className="grow aspect-square  h-48" />
+
+
             </TabsContent>
             <TabsContent value="expenses" >
               <FullOption

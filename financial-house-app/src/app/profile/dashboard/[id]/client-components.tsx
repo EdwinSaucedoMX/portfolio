@@ -1,11 +1,10 @@
 "use client"
-import { PieChart, pieChartDefaultProps, PieChartProps } from 'react-minimal-pie-chart'
+import { PieChart, pieChartDefaultProps } from 'react-minimal-pie-chart'
 
-import { createChart, ColorType } from 'lightweight-charts'
-import React, { useState, useRef, useEffect, useMemo, useReducer } from 'react'
-import { getMonocromaticSequenceHSL } from '@/shared/functions/style'
-import { useTheme } from 'next-themes'
+import { ColorType, createChart } from 'lightweight-charts'
 import { Menu } from 'lucide-react'
+import { useTheme } from 'next-themes'
+import { useEffect, useRef, useState } from 'react'
 
 export function FullOption(props: any) {
   const [selected, setSelected] = useState<number | undefined>(0)
