@@ -14,17 +14,17 @@ export function ProfileAvatar(props: any): React.JSX.Element {
 
   const number = props.number
   const pathname = usePathname()
-
+  const imageUrl = `https://minotar.net/avatar/${props.avatar}/${number}.png`
 
   return (
 
-    <Link href={`${pathname}/${crypto.randomUUID()}`} className='flex flex-col  aspect-square place-items-center max-h-60 min-h-60 hover:scale-105 transition-all cursor-pointer gap-5'  >
-      <Avatar className='w-full h-full border-secondary border-8'>
-        <AvatarImage src={`https://minotar.net/avatar/${props.avatar}/${number}.png`} />
+    <Link href={`${pathname}/${crypto.randomUUID()}`} className='flex flex-col  aspect-square place-items-center  hover:scale-105 transition-all cursor-pointer gap-5'  >
+      <Avatar className='w-full h-full '>
+        <AvatarImage src={imageUrl} />
         <AvatarFallback>{initials}</AvatarFallback>
       </Avatar>
       {number}
-      <h4 className='text-secondary text-center text-lg font-bold'>{props.name.split(" ").at(0)}</h4>
+      <h4 className='text-secondary-foreground text-center text-lg font-bold'>{props.name.split(" ").at(0)}</h4>
     </Link>
   )
 }

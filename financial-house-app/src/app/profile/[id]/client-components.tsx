@@ -1,9 +1,11 @@
+"use client"
 import { PieChart, pieChartDefaultProps, PieChartProps } from 'react-minimal-pie-chart'
 
 import { createChart, ColorType } from 'lightweight-charts'
 import React, { useState, useRef, useEffect, useMemo, useReducer } from 'react'
 import { getMonocromaticSequenceHSL } from '@/shared/functions/style'
 import { useTheme } from 'next-themes'
+import { Menu } from 'lucide-react'
 
 export function FullOption(props: any) {
   const [selected, setSelected] = useState<number | undefined>(0)
@@ -161,4 +163,8 @@ export const ChartComponent = (props: any) => {
 
 
 
-
+export function BurgerMenu(props: any) {
+  return <a {...props}>
+    <Menu className="absolute top-4 left-4 text-secondary-foreground  block" />
+  </a>
+}

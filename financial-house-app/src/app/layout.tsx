@@ -26,7 +26,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ModeToggle className="absolute top-2 right-2 z-10" />
+          <ModeToggle className="absolute top-4 right-4 z-10" />
           {children}
         </ThemeProvider>
       </body>
