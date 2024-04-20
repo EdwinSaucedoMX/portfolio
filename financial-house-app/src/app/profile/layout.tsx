@@ -10,7 +10,6 @@ export default function Layout(props: { children: React.ReactNode }) {
   const route = usePathname()
   const [section, id] = useSelectedLayoutSegments()
   const pathname = route.split("/").at(1)
-
   const getActive = () => {
     switch (section) {
       case "movements":
@@ -23,7 +22,7 @@ export default function Layout(props: { children: React.ReactNode }) {
   }
 
   const [active, setActive] = useState(getActive())
-
+  const size = useWindowSize()
   const handleActive = (index: number) => {
     setShow(false)
     setActive(index)
@@ -41,9 +40,39 @@ export default function Layout(props: { children: React.ReactNode }) {
 
   const handleShow = () => setShow(!show)
 
-  useEffect(() => {
-    if (window.innerWidth > 640) setShow(true)
-  }, [])
+  function useWindowSize() {
+    // Initialize state with undefined width/height so server and client renders match
+    // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+    const [windowSize, setWindowSize] = useState({
+      width: 0,
+      height: 0,
+    })
+
+    useEffect(() => {
+      if (typeof window === "undefined") return
+      if (window.innerWidth < 640) setShow(false)
+      if (window.innerWidth > 640) setShow(true)
+      // only execute all the code below in client side
+      // Handler to call on window resize
+      function handleResize() {
+        // Set window width/height to state
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        })
+      }
+
+      // Add event listener
+      window.addEventListener("resize", handleResize)
+
+      // Call handler right away so state gets updated with initial window size
+      handleResize()
+
+      // Remove event listener on cleanup
+      return () => window.removeEventListener("resize", handleResize)
+    }, []) // Empty array ensures that effect is only run on mount
+    return windowSize
+  }
   return (
     <main className="flex flex-row relative h-dvh ">
 
