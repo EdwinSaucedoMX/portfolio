@@ -12,12 +12,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/components/ui/table"
+import Link from "next/link"
 
 
 export function ProfileCard(props: any): React.JSX.Element {
   return (
     <div className='flex bg-primary flex-row content-stretch place-items-center h-32 py-4 px-2 sm:transition-all  gap-3 '>
-      <a href="" className="z-30  sm:hidden right-20 top-6 text-right font-semibold text-primary-foreground absolute hover:text-secondary">Volver</a>
+      {props.children}
       <figure className="relative text-primary group hover:cursor-pointer">
         <Avatar className='shadow-sm shadow-card-foreground group-hover:text-foreground min-w-16 min-h-16 sm:min-w-fit sm:min-h-fit'>
           <AvatarImage src={props.avatar} className="  " />

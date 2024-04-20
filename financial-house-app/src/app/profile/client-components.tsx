@@ -8,6 +8,7 @@ import { useTheme } from 'next-themes'
 import { Menu } from 'lucide-react'
 import { Skeleton } from "@/shared/components/ui/skeleton"
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 
 export function FullOption(props: any) {
   const [selected, setSelected] = useState<number | undefined>(0)
@@ -166,7 +167,7 @@ export const ChartComponent = (props: any) => {
 
 
 export function BurgerMenu(props: any) {
-  return <a {...props}>
+  return <div {...props}>
     <Menu className="absolute top-4 left-4 text-secondary-foreground  block" />
-  </a>
+  </div>
 }
