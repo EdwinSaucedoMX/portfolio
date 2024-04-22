@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-dvh w-dvw box-border" suppressHydrationWarning>
-      <body className="h-dvh max-w-full bg-background ">
+      <body className="h-full w-full  bg-background ">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

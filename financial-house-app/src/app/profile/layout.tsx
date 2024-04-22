@@ -22,7 +22,7 @@ export default function Layout(props: { children: React.ReactNode }) {
   }
 
   const [active, setActive] = useState(getActive())
-  const size = useWindowSize()
+
   const handleActive = (index: number) => {
     setShow(false)
     setActive(index)
@@ -36,51 +36,18 @@ export default function Layout(props: { children: React.ReactNode }) {
     return ""
   }
 
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(true)
 
   const handleShow = () => setShow(!show)
 
-  function useWindowSize() {
-    // Initialize state with undefined width/height so server and client renders match
-    // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
-    const [windowSize, setWindowSize] = useState({
-      width: 0,
-      height: 0,
-    })
 
-    useEffect(() => {
-      if (typeof window === "undefined") return
-      if (window.innerWidth < 640) setShow(false)
-      if (window.innerWidth > 640) setShow(true)
-      // only execute all the code below in client side
-      // Handler to call on window resize
-      function handleResize() {
-        // Set window width/height to state
-        setWindowSize({
-          width: window.innerWidth,
-          height: window.innerHeight,
-        })
-      }
-
-      // Add event listener
-      window.addEventListener("resize", handleResize)
-
-      // Call handler right away so state gets updated with initial window size
-      handleResize()
-
-      // Remove event listener on cleanup
-      return () => window.removeEventListener("resize", handleResize)
-    }, []) // Empty array ensures that effect is only run on mount
-    return windowSize
-  }
   return (
-    <main className="flex flex-row relative h-dvh ">
+    <main className="flex flex-row relative h-full w-full overflow-hidden box-border">
 
-      <BurgerMenu onClick={handleShow} className="sm:hidden cursor-pointer" />
+      <BurgerMenu onClick={handleShow} className=" cursor-pointer peer/burguer-menu" checked={show} />
 
       {
-        show &&
-        <aside className="block sm:block  bg-secondary sm:m-2 box-border sm:rounded-lg  overflow-hidden sm:min-w-16 sm:hover:min-w-64 min-w-full transition-all group/aside   sm:relative absolute z-20 h-dvh">
+        <aside className="hidden sm:block  bg-secondary sm:m-2 box-border sm:rounded-lg  overflow-hidden sm:min-w-16 sm:hover:min-w-64 min-w-full transition-all group/aside   sm:relative absolute z-20 sm:max-h-full  sm:h-auto h-full sm:peer-has-[:checked]/burguer-menu:block peer-has-[:checked]/burguer-menu:block  ">
 
           <ProfileCard >
             <p onClick={handleShow} className="z-30  sm:hidden right-20 top-6 text-right font-semibold text-primary-foreground absolute hover:cursor-pointer hover:text-secondary">Volver</p>

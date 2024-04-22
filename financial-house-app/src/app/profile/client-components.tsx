@@ -168,6 +168,7 @@ export const ChartComponent = (props: any) => {
 
 export function BurgerMenu(props: any) {
   return <div {...props}>
+    <input type="checkbox" checked={props.checked} className='hidden' />
     <Menu className="absolute top-4 left-4 text-secondary-foreground  block" />
   </div>
 }

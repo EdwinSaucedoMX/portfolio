@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 @layer base {
+	* {
+		box-sizing: border-box;
+		padding: 0;
+		margin: 0;
+		max-width: 100%;
+		max-height: 100dvh;
+	}
 	:root {
 		--background: 0 0% 100%;
 		--foreground: 224 71.4% 4.1%;

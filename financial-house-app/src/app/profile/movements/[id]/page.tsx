@@ -1,8 +1,15 @@
+import { MovementsCard } from "./components"
+
 export default function UserMovementsPage(props: any) {
   return (
-    <section className="w-full flex flex-wrap gap-2  sm:py-0 py-12">
-      <section className="w-full flex flex-wrap gap-2 p-4 content-start ">
-        <h1>User Movements Page</h1>
+    <section className="flex  gap-4  sm:py-0 py-12 box-border content-center flex-wrap">
+      <section className="w-full flex gap-4  box-border  flex-col justify-evenly flex-wrap">
+        <MovementsCard />
+        <MovementsCard />
+      </section>
+      <section className="w-full flex gap-4 box-border  flex-col justify-evenly flex-wrap">
+        <MovementsCard />
+        <MovementsCard />
       </section>
     </section>
   )
