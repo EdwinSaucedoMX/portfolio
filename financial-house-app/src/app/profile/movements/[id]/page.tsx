@@ -1,16 +1,14 @@
-import { MovementsCard } from "./components"
+import { LastMovementsTable, MovementsCard } from "./components"
 
 export default function UserMovementsPage(props: any) {
   return (
-    <section className="flex  gap-4  sm:py-0 py-12 box-border content-center flex-wrap">
-      <section className="w-full flex gap-4  box-border  flex-col justify-evenly flex-wrap">
+    <section className="flex flex-col gap-4 px-8 sm:py-8 pt-12 box-border  flex-wrap w-full">
+      <section className=" min-w-full h-full flex gap-4  box-border  flex-row    *:grow flex-wrap  sm:flex-nowrap overflow-auto sm:overflow-hidden">
         <MovementsCard />
-        <MovementsCard />
+        <LastMovementsTable />
+        {/* <MovementsCard /> */}
       </section>
-      <section className="w-full flex gap-4 box-border  flex-col justify-evenly flex-wrap">
-        <MovementsCard />
-        <MovementsCard />
-      </section>
+
     </section>
   )
 }

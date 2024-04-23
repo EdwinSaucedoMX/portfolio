@@ -1,21 +1,16 @@
 "use client"
-import { PieChart, pieChartDefaultProps, PieChartProps } from 'react-minimal-pie-chart'
+import { PieChart, pieChartDefaultProps } from 'react-minimal-pie-chart'
 
-import { createChart, ColorType } from 'lightweight-charts'
-import React, { useState, useRef, useEffect, useMemo, useReducer } from 'react'
-import { getMonocromaticSequenceHSL } from '@/shared/functions/style'
-import { useTheme } from 'next-themes'
+import { ColorType, createChart } from 'lightweight-charts'
 import { Menu } from 'lucide-react'
-import { Skeleton } from "@/shared/components/ui/skeleton"
-import dynamic from 'next/dynamic'
-import Link from 'next/link'
+import { useTheme } from 'next-themes'
+import { useEffect, useRef, useState } from 'react'
+
 
 export function FullOption(props: any) {
   const [selected, setSelected] = useState<number | undefined>(0)
   const [hovered, setHovered] = useState<number | undefined>(undefined)
-  /* const colorPrimary = getComputedStyle(document.documentElement).getPropertyValue('--primary')
-  console.log({ colorPrimary })
-  const colors = getMonocromaticSequenceHSL(colorPrimary, props.data.length) */
+
 
   const data = props.data.map((entry: any, i: number | undefined) => {
 

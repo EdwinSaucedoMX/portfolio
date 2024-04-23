@@ -55,3 +55,23 @@
 		--ring: 263.4 70% 50.4%;
 	}
 }
+
+.tv-lightweight-charts {
+	width: 100%;
+}
+
+table:has(canvas) {
+	display: flex;
+	tr:has(canvas) {
+		display: flex;
+		td:has(canvas) {
+			display: flex;
+			div:has(canvas) {
+				display: flex;
+				canvas {
+					display: flex;
+				}
+			}
+		}
+	}
+}
