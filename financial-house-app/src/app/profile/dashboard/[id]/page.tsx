@@ -24,7 +24,7 @@ export default function Page({ params }: { params: { id: string } }) {
   ]
 
   return (
-    <section className="w-full flex flex-wrap gap-2  sm:py-0 pt-12 pb-8 overflow-auto">
+    <section className="w-full flex flex-wrap   sm:py-0 pt-12 pb-8 overflow-auto px-8 content-center">
       <section className="w-full flex flex-wrap gap-2 p-4 content-start ">
         <SummaryCard />
         <section className="flex flex-wrap gap-2 p-6 bg-secondary grow shadow-card-foreground rounded-lg ">
@@ -66,8 +66,8 @@ export default function Page({ params }: { params: { id: string } }) {
 
         </section>
       </section>
-      <section className="px-16 w-full flex flex-col h-64 *:w-full *:h-full">
-        <h5 className="text-primary max-h-8 font-semibold text-lg">Desglose</h5>
+      <section className="px-8 py-4 mx-4  w-full flex flex-col h-64 *:w-full *:h-full bg-secondary rounded-sm">
+        <h5 className="text-primary max-h-8 font-semibold text-lg ">Desglose visual</h5>
         <ChartComponent data={initialData} className="w-full flex grow *:w-full *:flex *:*:grow" />
       </section>
     </section>

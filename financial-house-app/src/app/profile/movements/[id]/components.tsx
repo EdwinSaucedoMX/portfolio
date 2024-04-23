@@ -15,7 +15,7 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 
 export function MovementsCard() {
   return (
-    <Card className="border-muted flex flex-col justify-between">
+    <Card className="border-muted flex flex-col justify-between bg-secondary">
       <CardHeader>
         <CardTitle className="text-2xl">Movimientos</CardTitle>
         <CardDescription className="text-xl">Agrega tus egresos/ingresos.</CardDescription>
@@ -29,7 +29,7 @@ export function MovementsCard() {
           <div className="flex flex-col content-center gap-4 justify-between h-full">
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="concept">Concepto</Label>
-              <Input id="concept" placeholder="Descripcion breve" />
+              <Input id="concept" placeholder="Descripcion breve" className="bg-background" />
             </div>
             <div className="flex flex-col gap-1 space-y-1.5">
               <Label htmlFor="categoria">Categoria</Label>
