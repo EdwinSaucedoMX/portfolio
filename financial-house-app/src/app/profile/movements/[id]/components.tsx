@@ -15,26 +15,43 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 
 export function MovementsCard() {
   return (
-    <Card className="border-muted flex flex-col justify-between bg-secondary">
+    <Card className="border-muted flex flex-col justify-between overflow-auto min-h-fit">
       <CardHeader>
         <CardTitle className="text-2xl">Movimientos</CardTitle>
         <CardDescription className="text-xl">Agrega tus egresos/ingresos.</CardDescription>
       </CardHeader>
-      <CardContent className="grow">
-        <form className="flex flex-col content-between justify-evenly ">
-          <ToggleGroup type="single" variant="outline" className=" w-full flex justify-end ">
-            <ToggleGroupItem value="a" >Ingreso</ToggleGroupItem>
-            <ToggleGroupItem value="b">Egreso</ToggleGroupItem>
+      <CardContent className="grow ">
+        <form className="flex flex-col content-between justify-evenly gap-4  ">
+          <ToggleGroup type="single" variant="outline" defaultValue="earning" className=" w-full flex justify-end ">
+            <ToggleGroupItem value="earning" >Ingreso</ToggleGroupItem>
+            <ToggleGroupItem value="invoice">Egreso</ToggleGroupItem>
           </ToggleGroup>
           <div className="flex flex-col content-center gap-4 justify-between h-full">
+            <div className="flex gap-4">
+
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="concept">Cantidad</Label>
+                <Input id="concept" placeholder="Cantidad monetaria" className="bg-background" />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="concept">Fecha</Label>
+                <Input id="concept" type="date" placeholder="Fecha del movimiento" className="bg-background" />
+              </div>
+            </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="concept">Concepto</Label>
               <Input id="concept" placeholder="Descripcion breve" className="bg-background" />
+            </div>
+
+            <div className="flex flex-col gap-1 space-y-1.5">
+              <Label htmlFor="categoria">Metodo de pago</Label>
+              <MovementCategoriesBox />
             </div>
             <div className="flex flex-col gap-1 space-y-1.5">
               <Label htmlFor="categoria">Categoria</Label>
               <MovementCategoriesBox />
             </div>
+
           </div>
         </form>
       </CardContent>

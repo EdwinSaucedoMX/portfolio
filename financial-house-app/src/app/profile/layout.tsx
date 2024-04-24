@@ -62,7 +62,7 @@ export default function Layout(props: { children: React.ReactNode }) {
             <AsideSection icon={PersonStanding} title="Familia" activeclass={getClassActive(2)} onClick={() => handleActive(2)} />
           </Link>
           <Link href="/" className="absolute bottom-0 w-full">
-            <AsideSection icon={DoorClosed} title="Cerrar Sesion" activeclass={getClassActive(2)} onClick={() => handleActive(2)} />
+            <AsideSection icon={DoorClosed} title="Cerrar Sesion" activeclass={getClassActive(2)} onClick={() => handleActive(2)} hide="true" />
           </Link>
 
         </aside>}

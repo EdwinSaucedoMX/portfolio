@@ -41,12 +41,12 @@ export function ProfileCard(props: any): React.JSX.Element {
 export function AsideSection(props: any) {
 
   return (
-    <section className="flex justify-center content-center text-secondary-foreground flex-col hover:text-secondary hover:bg-secondary-foreground " {...props}>
+    <section className={`flex justify-center content-center text-secondary-foreground flex-col hover:text-secondary hover:bg-secondary-foreground ${props.className} `} {...props} >
       <section className={`flex flex-nowrap px-4 text-nowrap items-start group-hover/aside:sm:justify-start  gap-10  cursor-pointer py-4 min-w-full transition-all  min-h6 sm:justify-center justify-start ${props.activeclass}`} >
         <props.icon className="icon-section cursor-pointer text-2xl w-6 h-6 " />
         <p className="sm:hidden group-hover/aside:flex">{props.title}</p>
       </section>
-      <Separator className="bg-secondary-foreground opacity-10" />
+      {!props.hide && <Separator className="bg-secondary-foreground opacity-10 " />}
     </section>
   )
 }

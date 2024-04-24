@@ -1,7 +1,7 @@
 "use client"
 import { UUID } from "crypto"
 import { PieChart } from 'react-minimal-pie-chart'
-import { SummaryCard } from "./components"
+import { Summary } from "./components"
 import { getMonocromaticSequenceRGB } from "@/shared/functions/style"
 import { ChartComponent, FullOption } from "./client-components"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs"
@@ -24,9 +24,9 @@ export default function Page({ params }: { params: { id: string } }) {
   ]
 
   return (
-    <section className="w-full flex flex-wrap   sm:py-0 pt-12 pb-8 overflow-auto px-8 content-center">
+    <section className="w-full flex flex-wrap   sm:pt-24 pt-96 pb-8 overflow-auto px-8 content-center">
       <section className="w-full flex flex-wrap gap-2 p-4 content-start ">
-        <SummaryCard />
+        <Summary />
         <section className="flex flex-wrap gap-2 p-6 bg-secondary grow shadow-card-foreground rounded-lg ">
           <Tabs defaultValue="incomes" className="min-w-full ">
             <TabsList className="bg-primary text-primary-foreground">

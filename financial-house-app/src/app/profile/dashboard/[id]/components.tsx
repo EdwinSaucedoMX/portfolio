@@ -12,6 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/components/ui/table"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs"
 
 
 
@@ -51,31 +52,36 @@ export function AsideSection(props: any) {
   )
 }
 
-export function SummaryCard(props: any) {
+export function Summary(props: any) {
   return (
 
-    <section className="flex flex-wrap gap-2 overflow-hidden bg-secondary grow shadow-card-foreground rounded-lg content-start">
+    <section className="max-h-full flex flex-wrap gap-2 overflow-hidden bg-secondary grow shadow-card-foreground rounded-lg content-start">
       <h4 className="text-primary-foreground w-full h-8 flex place-items-center font-semibold text-xl p-6 bg-primary">Resumen</h4>
 
-      <Table >
-        <TableCaption>A list of your recent invoices.</TableCaption>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-[100px]">Invoice</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Method</TableHead>
-            <TableHead className="text-right">Amount</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <TableRow>
-            <TableCell className="font-medium">INV001</TableCell>
-            <TableCell>Paid</TableCell>
-            <TableCell>Credit Card</TableCell>
-            <TableCell className="text-right">$250.00</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
+      <Tabs defaultValue="month" className="min-w-full flex-col relative ">
+        <div className="flex justify-end w-full px-6 overflow-hidden" >
+          <TabsList className="bg-muted text-secondary-foreground  max-w-fit overflow-auto ">
+            <TabsTrigger value="quarter">Ultima quincena</TabsTrigger>
+            <TabsTrigger value="half">Ultima quincena</TabsTrigger>
+            <TabsTrigger value="month">Ultimo mes</TabsTrigger>
+            <TabsTrigger value="year">Ultimo anio</TabsTrigger>
+          </TabsList>
+
+        </div>
+        <TabsContent value="quarter" >
+          <SummaryTable />
+        </TabsContent>
+        <TabsContent value="half" >
+          <SummaryTable />
+        </TabsContent>
+        <TabsContent value="month" >
+          <SummaryTable />
+        </TabsContent>
+        <TabsContent value="year" >
+          <SummaryTable />
+        </TabsContent>
+      </Tabs>
+
 
     </section >
 
@@ -83,4 +89,28 @@ export function SummaryCard(props: any) {
 }
 
 
+
+function SummaryTable() {
+  return <Table>
+    <TableCaption>Listado de egresos/ingresos por periodo.</TableCaption>
+    <TableHeader>
+      <TableRow>
+        <TableHead className="w-[100px]">Tipo</TableHead>
+        <TableHead className="text-center">Periodo</TableHead>
+        <TableHead className="text-right">Gastos</TableHead>
+        <TableHead className="text-right">Ingresos</TableHead>
+        <TableHead className="text-right">Balance</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell className="font-medium">Ingresos</TableCell>
+        <TableCell className="text-center">Marzo - Abril</TableCell>
+        <TableCell className="text-right">$0.00</TableCell>
+        <TableCell className="text-right">$250.00</TableCell>
+        <TableCell className="text-right">$250.00</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+}
 
