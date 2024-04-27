@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/shared/components/ui/avatar"
 import { Separator } from "@/shared/components/ui/separator"
 import { Pencil1Icon } from "@radix-ui/react-icons"
-
+import { DonutChart, Legend, LineChart } from '@tremor/react'
 
 import {
   Table,
@@ -60,8 +60,8 @@ export function Summary(props: any) {
 
       <Tabs defaultValue="month" className="min-w-full flex-col relative ">
         <div className="flex justify-end w-full px-6 overflow-hidden" >
-          <TabsList className="bg-muted text-secondary-foreground  max-w-fit overflow-auto ">
-            <TabsTrigger value="quarter">Ultima quincena</TabsTrigger>
+          <TabsList className="bg-muted text-secondary-foreground  max-w-fit overflow-auto justify-start ">
+            <TabsTrigger value="quarter">Ultimo dia</TabsTrigger>
             <TabsTrigger value="half">Ultima quincena</TabsTrigger>
             <TabsTrigger value="month">Ultimo mes</TabsTrigger>
             <TabsTrigger value="year">Ultimo anio</TabsTrigger>
@@ -114,3 +114,173 @@ function SummaryTable() {
   </Table>
 }
 
+export function SummaryDonutChart(props: any) {
+  const data = props.data
+  const category = props.category
+  const labels = props?.labels ?? data.map((val: any) => val.label)
+  const valueFormatter = (number: number) =>
+    `$ ${Intl.NumberFormat('us').format(number).toString()}`
+  return (
+    <section className='flex flex-col justify-center grow min-w-full'>
+      <div className="flex  flex-col items-center justify-center content-center min-w-full ">
+        <DonutChart
+          data={data}
+          category={category}
+          index="label"
+          valueFormatter={valueFormatter}
+          colors={[
+            'purple-900',
+            'purple-800',
+            'purple-700',
+            'purple-600',
+            'purple-500',
+            'purple-400',
+          ]}
+
+          className="w-96"
+        />
+        <Legend
+          categories={labels}
+          colors={[
+            'purple-950',
+            'purple-900',
+            'purple-800',
+            'purple-700',
+            'purple-600',
+            'purple-500',
+            'purple-400',
+            'purple-300',
+            'purple-200',
+            'purple-100',
+            'purple-50',
+          ]}
+
+          className="w-full *:place-content-center *:place-items-center  "
+        />
+      </div>
+    </section>
+  )
+}
+export function SummaryIncomesDonut() {
+  const incomes = [
+    {
+      label: 'Salario',
+      sales: 980,
+    },
+    {
+      label: 'Prestamos',
+      sales: 456,
+    },
+    {
+      label: 'Negocio',
+      sales: 390,
+    },
+    {
+      label: 'Inversiones',
+      sales: 240,
+    },
+
+  ]
+
+  return (
+    <SummaryDonutChart data={incomes} category={"sales"} />
+  )
+}
+export function SummaryExpensesDonut() {
+  const data = [
+    { label: 'Mascota', value: 10, },
+    { label: 'Alimentos', value: 15, },
+    { label: 'Salidas', value: 20, },
+    { label: 'Deudas', value: 25, },
+    { label: 'Servicios', value: 30, },
+
+  ]
+
+  return (
+    <SummaryDonutChart data={data} category="value" />
+  )
+}
+
+export function SummaryLineChart() {
+  const chartdata = [
+    {
+      date: 'Jan 22',
+      SemiAnalysis: 2890,
+      'The Pragmatic Engineer': 2338,
+    },
+    {
+      date: 'Feb 22',
+      SemiAnalysis: 2756,
+      'The Pragmatic Engineer': 2103,
+    },
+    {
+      date: 'Mar 22',
+      SemiAnalysis: 3322,
+      'The Pragmatic Engineer': 2194,
+    },
+    {
+      date: 'Apr 22',
+      SemiAnalysis: 3470,
+      'The Pragmatic Engineer': 2108,
+    },
+    {
+      date: 'May 22',
+      SemiAnalysis: 3475,
+      'The Pragmatic Engineer': 1812,
+    },
+    {
+      date: 'Jun 22',
+      SemiAnalysis: 3129,
+      'The Pragmatic Engineer': 1726,
+    },
+    {
+      date: 'Jul 22',
+      SemiAnalysis: 3490,
+      'The Pragmatic Engineer': 1982,
+    },
+    {
+      date: 'Aug 22',
+      SemiAnalysis: 2903,
+      'The Pragmatic Engineer': 2012,
+    },
+    {
+      date: 'Sep 22',
+      SemiAnalysis: 2643,
+      'The Pragmatic Engineer': 2342,
+    },
+    {
+      date: 'Oct 22',
+      SemiAnalysis: 2837,
+      'The Pragmatic Engineer': 2473,
+    },
+    {
+      date: 'Nov 22',
+      SemiAnalysis: 2954,
+      'The Pragmatic Engineer': 3848,
+    },
+    {
+      date: 'Dec 22',
+      SemiAnalysis: 3239,
+      'The Pragmatic Engineer': 3736,
+    },
+  ]
+
+  const valueFormatter = function (number: number) {
+    return '$' + new Intl.NumberFormat('us').format(number).toString()
+  }
+
+  return (
+    <>
+      <h3 className="text-lg font-medium text-tremor-content-strong dark:text-dark-tremor-content-strong ">Newsletter revenue over time (USD)</h3>
+      <LineChart
+        className=""
+        data={chartdata}
+        index="date"
+        yAxisWidth={65}
+        categories={['SemiAnalysis', 'The Pragmatic Engineer']}
+        colors={['indigo', 'cyan']}
+        valueFormatter={valueFormatter}
+      />
+    </>
+  )
+}

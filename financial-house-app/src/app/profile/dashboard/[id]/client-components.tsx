@@ -5,6 +5,7 @@ import { ColorType, createChart } from 'lightweight-charts'
 import { Menu } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useEffect, useRef, useState } from 'react'
+import { DonutChart, Legend } from '@tremor/react'
 
 export function FullOption(props: any) {
   const [selected, setSelected] = useState<number | undefined>(0)
@@ -167,3 +168,5 @@ export function BurgerMenu(props: any) {
     <Menu className="absolute top-4 left-4 text-secondary-foreground  block" />
   </a>
 }
+
+
