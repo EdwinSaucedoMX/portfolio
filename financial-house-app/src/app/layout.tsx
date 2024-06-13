@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/shared/components/theme-provider"
 import { ModeToggle } from "@/shared/components/ModeToggle"
 import { Inter } from "next/font/google"
 import "./globals.css"
+import Head from "next/head"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -19,6 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-dvh w-dvw box-border" suppressHydrationWarning>
+      <Head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4380050393572271"
+          crossOrigin="anonymous"></script>
+      </Head>
       <body className="h-full w-full  bg-background ">
         <ThemeProvider
           attribute="class"
