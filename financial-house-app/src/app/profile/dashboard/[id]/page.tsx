@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui
 import { getMonocromaticSequenceRGB } from "@/shared/functions/style"
 import { ChartComponent, FullOption } from "./client-components"
 import { Summary, SummaryExpensesDonut, SummaryIncomesDonut, SummaryLineChart } from "./components"
+import Head from "next/head"
 
 export default function Page({ params }: { params: { id: string } }) {
   const colors = getMonocromaticSequenceRGB("rgb( 109,40,217)", 3)
@@ -21,40 +22,42 @@ export default function Page({ params }: { params: { id: string } }) {
   ]
 
   return (
-    <section className="w-full flex flex-wrap   pt-12  pb-8 overflow-auto px-8 content-start">
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4380050393572271"
-        crossOrigin="anonymous"></script>
-      <section className=" flex flex-wrap gap-2 p-4 justify-start grow ">
-        <Summary />
-        <section className="flex flex-wrap gap-2 p-6 bg-secondary grow shadow-card-foreground rounded-lg w-96 ">
-          <Tabs defaultValue="incomes" className="min-w-full ">
-            <TabsList className="bg-primary text-primary-foreground">
-              <TabsTrigger value="incomes">Ingresos</TabsTrigger>
-              <TabsTrigger value="expenses">Egresos</TabsTrigger>
-            </TabsList>
-            <TabsContent value="incomes" >
-              <div>
+    <>
+      <Head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4380050393572271"
+          crossOrigin="anonymous"></script>
+      </Head>
+      <section className="w-full flex flex-wrap   pt-12  pb-8 overflow-auto px-8 content-start">
 
-                {<SummaryIncomesDonut />}
-              </div>
-            </TabsContent>
-            <TabsContent value="expenses" >
-              <div>
-                <SummaryExpensesDonut />
-              </div>
-            </TabsContent>
-          </Tabs>
+        <section className=" flex flex-wrap gap-2 p-4 justify-start grow ">
+          <Summary />
+          <section className="flex flex-wrap gap-2 p-6 bg-secondary grow shadow-card-foreground rounded-lg w-96 ">
+            <Tabs defaultValue="incomes" className="min-w-full ">
+              <TabsList className="bg-primary text-primary-foreground">
+                <TabsTrigger value="incomes">Ingresos</TabsTrigger>
+                <TabsTrigger value="expenses">Egresos</TabsTrigger>
+              </TabsList>
+              <TabsContent value="incomes">
+                <div>
 
+                  {<SummaryIncomesDonut />}
+                </div>
+              </TabsContent>
+              <TabsContent value="expenses">
+                <div>
+                  <SummaryExpensesDonut />
+                </div>
+              </TabsContent>
+            </Tabs>
+
+          </section>
         </section>
-      </section>
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4380050393572271"
-        crossOrigin="anonymous"></script>
-      <section className="px-8 py-4 mx-4 flex flex-col  bg-secondary rounded-sm w-full">
-        <h5 className="text-primary max-h-8 font-semibold text-lg ">Desglose visual</h5>
-        <SummaryLineChart />
-      </section>
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4380050393572271"
-        crossOrigin="anonymous"></script>
-    </section>
+
+        <section className="px-8 py-4 mx-4 flex flex-col  bg-secondary rounded-sm w-full">
+          <h5 className="text-primary max-h-8 font-semibold text-lg ">Desglose visual</h5>
+          <SummaryLineChart />
+        </section>
+
+      </section></>
   )
 }
