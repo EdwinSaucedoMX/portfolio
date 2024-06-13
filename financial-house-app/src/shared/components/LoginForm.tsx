@@ -80,8 +80,8 @@ export function LoginForm() {
             )}
           />
           <section className="flex justify-between">
-            <Button type="submit" variant="outline">Registrarse</Button>
-            <Button type="submit" onClick={() => router.push("/profiles")}>Login</Button>
+            <Button type="button" variant="outline" onClick={() => router.push("/register")}>Registrarse</Button>
+            <Button type="button" onClick={() => router.push("/profiles")}>Login</Button>
           </section>
         </form>
       </Form>

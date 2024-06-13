@@ -22,6 +22,8 @@ export default function Page({ params }: { params: { id: string } }) {
 
   return (
     <section className="w-full flex flex-wrap   pt-12  pb-8 overflow-auto px-8 content-start">
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4380050393572271"
+        crossOrigin="anonymous"></script>
       <section className=" flex flex-wrap gap-2 p-4 justify-start grow ">
         <Summary />
         <section className="flex flex-wrap gap-2 p-6 bg-secondary grow shadow-card-foreground rounded-lg w-96 ">
@@ -45,10 +47,14 @@ export default function Page({ params }: { params: { id: string } }) {
 
         </section>
       </section>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4380050393572271"
+        crossOrigin="anonymous"></script>
       <section className="px-8 py-4 mx-4 flex flex-col  bg-secondary rounded-sm w-full">
         <h5 className="text-primary max-h-8 font-semibold text-lg ">Desglose visual</h5>
         <SummaryLineChart />
       </section>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4380050393572271"
+        crossOrigin="anonymous"></script>
     </section>
   )
 }

@@ -1,0 +1,11 @@
+{
+  "name": "addons",
+  "version": "1.0.0",
+  "description": "Visual Studio Code Extensions",
+  "main": "main.js",
+  "scripts": {
+    "test": "dev"
+  },
+  "author": "EdwinSaucedoMX",
+  "license": "ISC"
+}
