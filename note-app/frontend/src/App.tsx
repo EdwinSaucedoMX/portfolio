@@ -1,68 +1,50 @@
 import "./App.css"
-import { Counter } from "./features/counter/Counter"
-import { Quotes } from "./features/quotes/Quotes"
-import logo from "./logo.svg"
 
-const App = () => {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <Quotes />
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://reselect.js.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Reselect
-          </a>
-        </span>
-      </header>
-    </div>
+    <main className="min-w-[100dvw] min-h-[100dvh] max-h-[100dvh] max-w-[100dvw] flex">
+      <AsideMenuListNotes />
+      <textarea
+        className="min-h-[100dvh] max-h-[100dvh] w-full p-4 resize-none outline-slate-100"
+        placeholder="Write your note here it will be saved automatically..."
+      ></textarea>
+    </main>
   )
 }
 
-export default App
+function AsideMenuListNotes() {
+  return (
+    <aside className="max-w-96 min-h-[100dvh] shadow-lg p-4">
+      {/* Header list section*/}
+      <section className="flex shadow-md px-4 py-8">
+        <h2 className="text-2xl font-bold underline underline-offset-8">
+          User Notes
+        </h2>
+      </section>
+      {/* List section */}
+      <section className="flex flex-col p-4 shadow-md rounded-md overflow-hidden">
+        <h6 className="text-lg font-bold">Note 1</h6>
+        <p className="text-sm ">
+          This is a brief description of the first note.
+        </p>
+      </section>
+      <section className="flex flex-col p-4 shadow-md rounded-md overflow-hidden *:overflow-hidden *:text-nowrap *:text-ellipsis *:max-w-full">
+        <h6 className="text-lg font-bold">Note 2</h6>
+        <p className="text-sm">
+          This is a long description of the second note that is being added to
+          the list of notes in the application to test the overflow behavior of
+          the notes when the text is too long and the container is too small to
+          fit on the main content area.
+        </p>
+      </section>
+      <section className="flex flex-col p-4 shadow-md rounded-md overflow-hidden *:overflow-hidden *:text-nowrap *:text-ellipsis *:max-w-full">
+        <h6 className="text-lg font-bold">
+          Note 3 that is a long title and does not fit in the container
+        </h6>
+        <p className="text-sm">
+          This is a brief description of the third note.
+        </p>
+      </section>
+    </aside>
+  )
+}
