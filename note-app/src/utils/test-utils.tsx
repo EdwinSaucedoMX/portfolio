@@ -11,7 +11,6 @@ import { makeStore } from "../app/store"
  * React Testing Library's render function. It allows for
  * additional configuration such as specifying an initial Redux state and
  * a custom store instance.
- *
  */
 interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
   /**
